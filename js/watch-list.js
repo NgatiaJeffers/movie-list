@@ -44,6 +44,7 @@ function showMovies(movies) {
             <div class="overview">
                 <h3>Overview:</h3>
                 ${overview}
+                <button type="button" class="btn btn-primary">Watch Later</button>
             </div>
         `;
 
@@ -62,27 +63,14 @@ function getClassByRate(vote) {
 }
 
 
-(function(){
-    $('#search').click(function(e){
-        e.preventDefault();
+main.addEventListener("click", (e) => {
+    e.preventDefault();
 
-        const searchTerm = search.value;
-
-        if (searchTerm) {
-            getMovies(SEARCHAPI + searchTerm);
+    const searchTerm = search.value;
     
-            search.value = "";
-        }
-    })
-})
-// main.addEventListener("submit", (e) => {
-//     e.preventDefault();
+    if (searchTerm) {
+        getMovies(SEARCHAPI + searchTerm);
 
-//     const searchTerm = search.value;
-
-//     if (searchTerm) {
-//         getMovies(SEARCHAPI + searchTerm);
-
-//         search.value = "";
-//     }
-// });
+        search.value = "";
+    }
+});

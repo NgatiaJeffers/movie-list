@@ -14,14 +14,30 @@ async function getMovies(url) {
     const res = await fetch(url);
     const resData = await res.json();
     
-    console.log(resData);
+    // console.log(resData);
 
     showMovies(resData.results);
 
 }
 
+
+
+searchArea.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const searchTerm = search.value;
+    
+    if (searchTerm) {
+        getMovies(SEARCHAPI + searchTerm);
+
+        search.value = "";
+    }
+});
+
+
+
 function showMovies(movies) {
-    // clear main
+
     main.innerHTML = "";
 
     movies.forEach((movie) => {
@@ -44,13 +60,15 @@ function showMovies(movies) {
             <div class="overview">
                 <h3>Overview:</h3>
                 ${overview}
-                <button type="button" class="btn btn-primary">Watch Later</button>
+                <button type="button" class="btn btn-primary" id="addBtn">Watch Later</button>
             </div>
         `;
 
         main.appendChild(movieEl);
     });
 }
+
+
 
 function getClassByRate(vote) {
     if (vote >= 8) {
@@ -63,14 +81,3 @@ function getClassByRate(vote) {
 }
 
 
-searchArea.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const searchTerm = search.value;
-    
-    if (searchTerm) {
-        getMovies(SEARCHAPI + searchTerm);
-
-        search.value = "";
-    }
-});

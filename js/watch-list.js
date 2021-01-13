@@ -5,8 +5,8 @@ const SEARCHAPI =
     "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 
 const main = document.getElementById("main");
-const searchArea = document.getElementById("search-area");
-const search = document.getElementById("search");
+const searchArea = document.getElementById("searchArea");
+const search = document.getElementById("search-input");
 
 getMovies(APIURL);
 
@@ -63,7 +63,7 @@ function getClassByRate(vote) {
 }
 
 
-main.addEventListener("click", (e) => {
+searchArea.addEventListener("click", (e) => {
     e.preventDefault();
 
     const searchTerm = search.value;

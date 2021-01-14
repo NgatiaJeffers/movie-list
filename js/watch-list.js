@@ -14,25 +14,11 @@ async function getMovies(url) {
     const res = await fetch(url);
     const resData = await res.json();
     
-    // console.log(resData);
+    console.log(resData);
 
     showMovies(resData.results);
 
 }
-
-
-
-searchArea.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const searchTerm = search.value;
-    
-    if (searchTerm) {
-        getMovies(SEARCHAPI + searchTerm);
-
-        search.value = "";
-    }
-});
 
 
 
@@ -79,5 +65,18 @@ function getClassByRate(vote) {
         return "red";
     }
 }
+
+
+searchArea.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const searchTerm = search.value;
+    
+    if (searchTerm) {
+        getMovies(SEARCHAPI + searchTerm);
+
+        search.value = "";
+    }
+});
 
 
